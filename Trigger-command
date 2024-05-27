@@ -1,0 +1,18 @@
+ Trigger-commands for postgresql
+
+    -- Step 1: Create the function
+
+      CREATE or replace function set_updated_at()
+      returns trigger as $$
+      begin
+      new.updated_at=CUrrent_timestamp;
+      return  new;
+      end;
+      $$ language plpgsql;
+
+-- step 2: Create the trigger
+
+      create trigger update_updated_at
+      before insert on users
+      for each row
+      execute function set_updated_at();
