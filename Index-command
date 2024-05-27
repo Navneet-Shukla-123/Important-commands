@@ -1,0 +1,8 @@
+-- Index command
+
+SYNTAX : 
+
+  create index "index-name" on "table-name(column-name)"
+
+    create index users_index on users(id);
+    create index tokens_index on tokens(id);
